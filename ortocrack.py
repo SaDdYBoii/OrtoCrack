@@ -7,14 +7,16 @@ def add_password(password):
     if password not in passwords:
         for x in range(1, len(basename)):
             pw = password[:x] + " " + password[x:]
-            passwords.append(pw)
+            if pw not in passwords:
+                passwords.append(pw)
             for x in range(1, len(basename)):
-                passwords.append(pw[:x] + " " + pw[x:])
+                pw2 = pw[:x] + " " + pw[x:]
+                if pw2 not in passwords:
+                    passwords.append(pw2)
         passwords.append(password)
-        passwords.append(password + "1")
     for x in range(5):
         extra_num = extra_num + str(int(extra_num) + 1)[-1:]
-        if password + extra_num not in passwords:
+        if x > 1 and password + extra_num not in passwords:
             passwords.append(password + extra_num)
 
 
