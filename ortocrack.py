@@ -24,8 +24,9 @@ def uppercase(letter, i):
     return pw
 
 
-basename = str(input("Base Password> "))
+basename = str(input("Base Password> ")).lower()
 logging.basicConfig(filename=basename + "-wordlist.txt", level=logging.DEBUG, format='%(message)s')
+logging.log(10, basename)
 for char in range(len(basename)):
     uppercased = uppercase(basename, char)
     for x in range(len(basename)):
